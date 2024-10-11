@@ -1,0 +1,35 @@
+<div class="flex justify-content-center align-items-center min-h-screen w-full">
+
+    <p-card header="Form User" class="w-5">
+        <form [formGroup]="formUser" (ngSubmit)="edit?editUser():addNewUser()" class="flex flex-column gap-2">
+            <div class="field flex flex-column gap-1">
+                <label for="name">Name</label>
+                <input type="text" pInputText formControlName="name" />
+            </div>
+            <div class="field flex flex-column gap-1">
+                <label for="password">Password</label>
+                <p-password  formControlName="password" [feedback]="false" />
+            </div>
+
+            <div class="field flex flex-column gap-1">
+                <label for="phone">Phone</label>
+                <input type="text" pInputText formControlName="phone" />
+            </div>
+
+
+            <div class="field flex flex-column gap-1">
+                <label for="position">Position</label>
+                <select name="position " formControlName="position">
+                    <option value="1">Admin</option>
+                    <option value="2">User</option>
+                </select>
+            </div>
+            <div class="flex gap-2">
+
+                <p-button label="Save" [loading]="IsSavingInProgress" type="submit" />
+            </div>
+
+        </form>
+    </p-card>
+
+</div>

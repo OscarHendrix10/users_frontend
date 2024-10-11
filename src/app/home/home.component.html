@@ -1,0 +1,39 @@
+
+
+<h1 class="">CRUD USERS</h1>
+
+<div class="flex flex-column gap-2 w-10">
+    <a routerLink="user-form/new" class="p-button font-bold w-max">
+        Add New User</a>
+
+    <div class="flex gap-4 flex-wrap">
+        @for (user of users; track user.id) {
+
+        <p-card header=" {{user.name}}" [style]="{ width: '360px' }">
+            <ng-template pTemplate="header">
+                <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
+            </ng-template>
+            <p>
+                Telephone: {{user.phone}}
+            </p>
+            <p>
+                Position: {{user.position == 1 ? 'Admin' : 'User'}}
+
+            </p>
+            <p>
+                Staus: {{user.status == 1 ? 'Active' : 'Inactive'}}
+            </p>
+            <ng-template pTemplate="footer">
+                <div class="flex gap-3 mt-1">
+                    <p-button label="Delete" (onClick)="deleteUser(user.id)" severity="secondary" />
+                    <a routerLink="user-form/{{user.id}}" class="p-button font-bold">
+                        Edit </a>
+                </div>
+            </ng-template>
+        </p-card>
+
+        }@empty {
+        <p>No data user</p>
+        }
+    </div>
+</div>

@@ -9,6 +9,10 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import Swal from 'sweetalert2';
 
+
+// The HomeComponent class is an Angular component that displays a list of users in a table. 
+// The component uses the UserService to fetch the users from the server. 
+// The component also provides a button to delete a user. The component uses the SweetAlert2 library to display a confirmation dialog before deleting a user.
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -18,8 +22,7 @@ import Swal from 'sweetalert2';
 })
 
 
-
-
+// The HomeComponent class is an Angular component that displays a list of users in a table.
 export class HomeComponent {
 
   users:User[] = []
@@ -28,19 +31,19 @@ export class HomeComponent {
 
   constructor(private userService: UserService, private messageService:MessageService) {}
 
-  
+  // The ngOnInit method is an Angular lifecycle hook that is called after the component is initialized.
   ngOnInit(): void {
     this.getAllUsers()
   }
 
-
+// The getAllUsers method fetches all users from the server using the UserService.
   getAllUsers() {
     this.userService.getUsers().subscribe((data: User[]) => {
         this.users = data;
       });
   }
 
-  
+  // The deleteUser method deletes a user by id using the UserService. The method displays a confirmation dialog before deleting the user.
   deleteUser(id:number){
     this.deleteInprogress = true;
     console.log(id);

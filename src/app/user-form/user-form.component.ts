@@ -11,6 +11,11 @@ import { CardModule } from 'primeng/card';
 import Swal from 'sweetalert2';
 import { PasswordModule } from 'primeng/password';
 
+
+// The UserFormComponent class is an Angular component that provides a form to create or edit a user.
+// The component uses the UserService to create or update a user. The component uses the SweetAlert2 library to display success or error messages.
+// The component uses the ActivatedRoute to get the id of the user to edit.
+// The component uses the Router to navigate to the home page after creating or updating a user.
 @Component({
   selector: 'app-user-form',
   standalone: true,
@@ -27,6 +32,7 @@ import { PasswordModule } from 'primeng/password';
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.scss'
 })
+// The UserFormComponent class is an Angular component that provides a form to create or edit a user.
 export class UserFormComponent {
 
   formUser!: FormGroup;
@@ -34,6 +40,7 @@ export class UserFormComponent {
   edit:boolean = false;
 
 
+  // The constructor method is an Angular class method that is called when the component is created.
   constructor(private fb: FormBuilder, 
     private userService: UserService, 
     private route: ActivatedRoute,  
@@ -51,6 +58,7 @@ export class UserFormComponent {
     });
   }
 
+  // The ngOnInit method is an Angular lifecycle hook that is called after the component is initialized.
   ngOnInit(): void {
     let id = this.route.snapshot.paramMap.get('id');    
     if(id !== 'new'){
@@ -59,6 +67,7 @@ export class UserFormComponent {
       }
     }
 
+    // The getUsersId method fetches a user by id using the UserService.
   getUsersId(id:number) {
       this.userService.getUserById(id).subscribe({
         next:foundUser =>{
@@ -76,6 +85,7 @@ export class UserFormComponent {
     };
 
   
+    // The addNewUser method creates a new user using the UserService. The method displays a success or error message using the SweetAlert2 library
     addNewUser(){
       if(this.formUser.invalid){
         Swal.fire({
@@ -110,7 +120,7 @@ export class UserFormComponent {
       });
     }
 
-    
+    // The editUser method updates a user using the UserService. The method displays a success or error message
     editUser(){
       if(this.formUser.invalid){
        Swal.fire({

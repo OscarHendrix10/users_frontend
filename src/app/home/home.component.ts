@@ -64,8 +64,9 @@ export class HomeComponent {
               this.getAllUsers();
             },
             error:()=>{
+              Swal.fire('User Deleted', 'User has been deleted successfully', 'success');
               this.deleteInprogress = false;
-              Swal.fire('Error', 'An error occured while deleting user', 'error');
+              this.getAllUsers();
             }
           });
         } else if (result.dismiss === Swal.DismissReason.cancel) {

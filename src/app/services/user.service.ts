@@ -41,7 +41,7 @@ export class UserService {
 
   // The deleteUser method sends an HTTP DELETE request to the server to delete a user. The method returns an Observable that emits the deleted User object.
   deleteUser(id:number){
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(this.apiUrl+`/${id}`);
   }
 
 
